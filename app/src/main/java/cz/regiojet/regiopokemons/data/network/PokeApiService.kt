@@ -11,6 +11,6 @@ interface PokeApiService {
 
     @GET("pokemon")
     suspend fun getPokemons(
-        @Query("limit") limit: Int = 20 // Limit max results to 20
+        @Query("limit") limit: Int = 20
     ): PokemonResponse
 }
