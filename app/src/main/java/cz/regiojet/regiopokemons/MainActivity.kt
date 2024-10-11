@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,6 +15,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cz.regiojet.regiopokemons.ui.theme.RegioPokemonsTheme
@@ -47,7 +47,6 @@ fun MainActivityScreen(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -63,7 +62,7 @@ fun MainActivityScreen(modifier: Modifier = Modifier) {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = " Hello Android!",
+        text = "Hello $name!",
         modifier = modifier
     )
 }
@@ -77,7 +76,6 @@ fun PokemonListScreen(modifier: Modifier = Modifier) {
     fun fetchPokemons() {
         coroutineScope.launch {
             isLoading = true
-
             delay(22)
             pokemons = listOf("")
             isLoading = false
@@ -100,7 +98,8 @@ fun PokemonListScreen(modifier: Modifier = Modifier) {
                     onClick = { fetchPokemons() },
                     modifier = Modifier
                         .padding(vertical = 8.dp)
-                        .fillMaxWidth(0.8f)
+                        .fillMaxWidth(0.8f),
+                    shape = RectangleShape
                 ) {
                     Text("Fetch Pokemon List ${index + 1}")
                 }
